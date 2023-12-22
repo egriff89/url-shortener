@@ -13,7 +13,7 @@ type StorageService struct {
 	redisClient *redis.Client
 }
 
-// Top level declarations for the storeService and Redus context
+// Top level declarations for the storeService and Redis context
 var (
 	storeService = &StorageService{}
 	ctx          = context.Background()

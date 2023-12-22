@@ -9,7 +9,7 @@ import (
 	"github.com/itchyny/base58-go"
 )
 
-func sha2560f(input string) []byte {
+func sha256Of(input string) []byte {
 	algorithm := sha256.New()
 	algorithm.Write([]byte(input))
 	return algorithm.Sum(nil)
@@ -26,7 +26,7 @@ func base58Encoded(bytes []byte) string {
 }
 
 func GenerateShortLink(initialLink string, userId string) string {
-	urlHashBytes := sha2560f(initialLink + userId)
+	urlHashBytes := sha256Of(initialLink + userId)
 	generatedNumber := new(big.Int).SetBytes(urlHashBytes).Uint64()
 	finalString := base58Encoded([]byte(fmt.Sprintf("%d", generatedNumber)))
 	return finalString
